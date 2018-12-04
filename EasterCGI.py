@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 import cgi, cgitb
+cgitb.enable()
 form = cgi.FieldStorage()
-theYear = form.getvalue('theYear')
+theYear = int(form.getvalue('theYear'))
+format_option = form.getvalue("format")
 
 def Easter(y):
 	a = y % 19
@@ -17,7 +19,10 @@ def Easter(y):
 	r = (2 * e + 2 * j - k - h + m + 32) % 7
 	n = (h - m + r + 90) // 25
 	p = (h - m + r + n + 19) % 32
-	print(str(p) + "/" + str(n) + "/" + str(y))
+	return p,n,y
+
+p, n, y = Easter(theYear)
+
 
 
 print('Content-Type: text/html; charset=utf-8')
@@ -27,7 +32,7 @@ print('<html>')
 print('<head> <title> Finding Easter </title> </head>')
 print('<body>')
 print('<h2>')
-print(theYear)
+print("Easter will fall on the %s of %s %s" % (p, n, y))
 print('</h2>')
 print('</body>')
 print('</html>')
