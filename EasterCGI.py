@@ -23,6 +23,11 @@ def Easter(y):
 
 p, n, y = Easter(theYear)
 
+def March(n):
+	return "March"
+def April(n):
+	return "April"
+
 
 
 print('Content-Type: text/html; charset=utf-8')
@@ -32,7 +37,21 @@ print('<html>')
 print('<head> <title> Finding Easter </title> </head>')
 print('<body>')
 print('<h2>')
-print("Easter will fall on the %s of %s %s" % (p, n, y))
+if format_option == "numerically":
+	print("Easter will fall on the %s / %s / %s" % (p, n, y))
+elif format_option == "verbosely":
+	if n == 3:
+		print(p, 'of', March(n), y)
+	elif n == 4:
+		print(p, 'of', April(n), y)
+else:
+	if n == 3:
+		print(p, 'of', March(n), y)
+	elif n == 4:
+		print(p, 'of', April(n), y)
+	print('<br>')
+	print("Easter will fall on the %s / %s / %s" % (p, n, y))
+	
 print('</h2>')
 print('</body>')
 print('</html>')
