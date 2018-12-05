@@ -27,6 +27,16 @@ def March(n):
 	return "March"
 def April(n):
 	return "April"
+def sup(p):
+	if p == 1 and 21 and 31:
+		return "st"
+	elif p == 2 and 22:
+		return "nd"
+	elif p == 3 and 23:
+		return "rd"
+	else:
+		return "th"
+
 
 
 
@@ -34,23 +44,29 @@ print('Content-Type: text/html; charset=utf-8')
 print('')
 print('<!DOCTYPE html>')
 print('<html>')
-print('<head> <title> Finding Easter </title> </head>')
+print('<head> <title>')
+print(' Finding Easter </title>')
+print('<style>')
+print('body {background-color: skyblue;}')
+print('h2 {font-family: verdana; text-align: center;}')
+print('</style>')
+print('</head>')
 print('<body>')
 print('<h2>')
 if format_option == "numerically":
-	print("Easter will fall on the %s / %s / %s" % (p, n, y))
+	print("Easter will fall on %s / %s / %s" % (p, n, y))
 elif format_option == "verbosely":
 	if n == 3:
-		print(p, 'of', March(n), y)
+		print('Easter will fall on the', p,"<sup>",sup(p), "</sup>", 'of', March(n), y)
 	elif n == 4:
-		print(p, 'of', April(n), y)
+		print('Easter will fall on the', p,"<sup>",sup(p), "</sup>", 'of', April(n), y)
 else:
 	if n == 3:
-		print(p, 'of', March(n), y)
+		print('Easter will fall on the', p,"<sup>",sup(p), "</sup>", 'of', March(n), y)
 	elif n == 4:
-		print(p, 'of', April(n), y)
+		print('Easter will fall on the', p,"<sup>",sup(p), "</sup>", 'of', April(n), y)
 	print('<br>')
-	print("Easter will fall on the %s / %s / %s" % (p, n, y))
+	print("or %s / %s / %s" % (p, n, y))
 	
 print('</h2>')
 print('</body>')
