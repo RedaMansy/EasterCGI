@@ -28,17 +28,28 @@ def March(n):
 def April(n):
 	return "April"
 def sup(p):
-	if p == 1 and 21 and 31:
+	if p == 1:
 		return "st"
-	elif p == 2 and 22:
+	elif p == 21:
+		return "st"
+	elif p == 31:
+		return "st"
+	elif p == 2:
 		return "nd"
-	elif p == 3 and 23:
+	elif p == 22:
+		return "nd"
+	elif p == 3:
+		return "rd"
+	elif p == 23:
 		return "rd"
 	else:
 		return "th"
 
-
-
+def leading_zero(p):
+	if p < 10:
+		return "0"
+	else:
+		return ""
 
 print('Content-Type: text/html; charset=utf-8')
 print('')
@@ -54,7 +65,7 @@ print('</head>')
 print('<body>')
 print('<h2>')
 if format_option == "numerically":
-	print("Easter will fall on %s / %s / %s" % (p, n, y))
+	print("Easter will fall on", leading_zero(p) + "%s / 0%s / %s" % (p, n, y))
 elif format_option == "verbosely":
 	if n == 3:
 		print('Easter will fall on the', p,"<sup>",sup(p), "</sup>", 'of', March(n), y)
@@ -66,7 +77,7 @@ else:
 	elif n == 4:
 		print('Easter will fall on the', p,"<sup>",sup(p), "</sup>", 'of', April(n), y)
 	print('<br>')
-	print("or %s / %s / %s" % (p, n, y))
+	print("or", leading_zero(p) + "%s / 0%s / %s" % (p, n, y))
 	
 print('</h2>')
 print('</body>')
